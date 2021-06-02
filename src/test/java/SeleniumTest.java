@@ -1,4 +1,3 @@
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -9,16 +8,25 @@ public class SeleniumTest {
         Selenium.setup();
     }
 
-    @Test(priority=1)
-    public void searchByKeywordTest(){
-        Selenium.search("Baranauskas");
+    @Test
+    public void addMovieTest(){
+        Selenium.addMovie("Summer","Familie","love", "lolo", "12");
     }
-
-    @Test(priority=2)
-    public void getResults(){
-        Selenium.search("Baranauskas");
-        //pirmas parametras bus expected, antras - actual
-        Assert.assertEquals(Selenium.getResults(), 193000);
+    @Test
+    public void wrongMovieTest(){
+        Selenium.wrongMovie("@.",",/@>@","/[]@", "jdjdj", ".");
+    }
+    @Test
+    public void deleteMovieTest(){
+        Selenium.deleteMovie("6");
+    }
+    @Test
+    public void updateMovieTest(){
+        Selenium.updateMovie("7","gogo","tragedy","snow", "jojo", "167");
+    }
+    @Test
+    public void wrongUpdateTest(){
+        Selenium.wrongUpdate("67.,/l",";,'l","...","!.,/.", "kl.,", "u");
     }
 
     @AfterTest
